@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="com.example.mskir.hw7.MainActivity">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <Button
+                android:id="@+id/b_add"
+                android:onClick="onClick"
+                android:layout_weight="1"
+                android:text="맛집추가"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/b_name"
+                android:onClick="onClick"
+                android:layout_weight="1"
+                android:text="이름순"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/b_kind"
+                android:onClick="onClick"
+                android:layout_weight="1"
+                android:text="종류별"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/b_select"
+                android:onClick="onClick"
+                android:layout_weight="1"
+                android:text="선택"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/b_delete"
+                android:onClick="onClick"
+                android:layout_weight="1"
+                android:text="삭제"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+    <EditText
+        android:background="#fcc2d9"
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:drawableLeft="@android:drawable/ic_lock_lock"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="검색할 맛집을 넣으세요"/>
+
+    <ListView
+        android:textFilterEnabled="true"
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
