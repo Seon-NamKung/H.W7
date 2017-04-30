@@ -14,7 +14,6 @@ public class Data implements Parcelable{
     private String homepage;
     private String registered;
     private int category;
-    private Boolean isCheck;
 
     public Data(String name, String call,String[] menu,
                 String homepage,String registered,int category){
@@ -24,9 +23,8 @@ public class Data implements Parcelable{
         this.homepage = homepage;
         this.registered = registered;
         this.category = category;
-        this.isCheck = false;
     }
-    public void setData(String name, String call,String[] menu,
+/*    public void setData(String name, String call,String[] menu,
                 String homepage,String registered,int category){
         this.name = name;
         this.call = call;
@@ -34,8 +32,7 @@ public class Data implements Parcelable{
         this.homepage = homepage;
         this.registered = registered;
         this.category = category;
-        this.isCheck = false;
-    }
+    }*/
 
     protected Data(Parcel in) {
         name = in.readString();
@@ -80,12 +77,6 @@ public class Data implements Parcelable{
 
     int getCategory(){
         return category;
-    }
-
-    Boolean getIsChecked(){return isCheck; }
-
-    public void setIsChecked(Boolean which){
-        isCheck = which;
     }
 
 

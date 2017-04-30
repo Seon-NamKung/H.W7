@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
             Collections.sort(instanceList, nameAsc);
             dataAdapter.notifyDataSetChanged();
-
         }
         else if(v == b_kind){
             Comparator<Data> nameAsc = new Comparator<Data>() {
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(v == b_select){
             checkBoxHandler(true);
         }else if( v == b_delete){
-            instanceList = dataAdapter.getList();
+
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
             dialog.setTitle("삭제확인")
                     .setIcon(R.drawable.baemin)
@@ -119,21 +118,13 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            for(int i = instanceList.size()-1;i>=0;i--){
-                                if(instanceList.get(i).getIsChecked()){
-                                    instanceList.remove(i);
-                                }
-                            }
-                            dataAdapter.notifyDataSetChanged();
-                            dataAdapter.setList();
-//                            Snackbar.make(,"삭제되었습니다.",1000).setAction("확인",null).show();
+                            instanceList = dataAdapter.deleteCheckedItem();
+                            checkBoxHandler(false);
                         }
                     })
                     .setNegativeButton("취소", null)
                     .create()
                     .show();
-
-            checkBoxHandler(false);
 
         }
     }
@@ -153,15 +144,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initListView() {
-        dataAdapter = new DataAdapter(this,instanceList);
-        listView = (ListView)findViewById(R.id.listview);
+        dataAdapter = new DataAdapter(this, instanceList);
+        listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(dataAdapter);
-        b_add = (Button)findViewById(R.id.b_add);
-        b_name = (Button)findViewById(R.id.b_name);
-        b_kind = (Button)findViewById(R.id.b_kind);
-        b_select = (Button)findViewById(R.id.b_select);
-        b_delete = (Button)findViewById(R.id.b_delete);
-        editText = (EditText)findViewById(R.id.editText);
+        b_add = (Button) findViewById(R.id.b_add);
+        b_name = (Button) findViewById(R.id.b_name);
+        b_kind = (Button) findViewById(R.id.b_kind);
+        b_select = (Button) findViewById(R.id.b_select);
+        b_delete = (Button) findViewById(R.id.b_delete);
+        editText = (EditText) findViewById(R.id.editText);
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -181,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
                     listView.setFilterText(filterText) ;
                 } else {
                     listView.clearTextFilter() ; }
-
             }
         });
     }
